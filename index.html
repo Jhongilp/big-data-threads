@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Práctica de memoria compartida</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h1>Memoria compartida</h1>
+      <main>
+        <div class="workers">
+          <div class="workers-config">
+            <label for="num-items"># de elementos del array: </label>
+            <input
+              id="num-items"
+              name="num-items"
+              type="number"
+              value="10000000"
+              max="100000000"
+            />
+          </div>
+
+          <div class="workers-btns">
+            <button id="main-thread">Main thread</button>
+            <div class="thread-group">
+              <button id="worker-2">Hilo 2</button>
+              <span id="timer-worker-2"></span>
+            </div>
+            <div class="thread-group">
+              <button id="worker-3">Hilo 3</button>
+              <span id="timer-worker-3"></span>
+            </div>
+            <div class="thread-group">
+              <button id="worker-4">Hilo 4</button>
+              <span id="timer-worker-4"></span>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div class="counter-wrapper">
+          <!-- <button id="add-btn">+</button>
+          <button id="rest-btn">-</button> -->
+          <span id="counter-result">0</span>
+        </div>
+
+        <div class="results-wrapper">
+          <ul id="results-list">
+            <li>
+              <span>1</span>
+              <div class="result-content" id="result-1"></div>
+              <!-- <div class="bar" data-pos="1"></div> -->
+            </li>
+            <li>
+              <span>2</span>
+              <div class="result-content" id="result-2"></div>
+            </li>
+            <li>
+              <span>3</span>
+              <div class="result-content" id="result-3"></div>
+            </li>
+            <li>
+              <span>4</span>
+              <div class="result-content" id="result-4"></div>
+            </li>
+            <li>
+              <span>5</span>
+              <div class="result-content" id="result-5"></div>
+            </li>
+            <li>
+              <span>6</span>
+              <div class="result-content" id="result-6"></div>
+            </li>
+            <li>
+              <span>7</span>
+              <div class="result-content" id="result-7"></div>
+            </li>
+            <li>
+              <span>8</span>
+              <div class="result-content" id="result-8"></div>
+            </li>
+            <li>
+              <span>9</span>
+              <div class="result-content" id="result-9"></div>
+            </li>
+            <li>
+              <span>10</span>
+              <div class="result-content" id="result-10"></div>
+            </li>
+          </ul>
+        </div>
+      </main>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
