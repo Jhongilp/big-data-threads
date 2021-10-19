@@ -2,6 +2,18 @@ const mainThread = document.getElementById("main-thread");
 const worker2 = document.getElementById("worker-2");
 const worker3 = document.getElementById("worker-3");
 const worker4 = document.getElementById("worker-4");
+const COLORS = [
+  "#295db5",
+  "#3529b5",
+  "#9d29b5",
+  "#b52973",
+  "#b52946",
+  "#29b5ac",
+  "#29b578",
+  "#48b529",
+  "#9cb529",
+  "#b5ae29",
+];
 
 const addBtn = document.getElementById("add-btn");
 const minusBtn = document.getElementById("rest-btn");
@@ -42,18 +54,17 @@ if (window.Worker) {
   var myWorker4 = new Worker("worker4.js");
 }
 
-// addBtn.onclick = () => {
-//   counter++;
-//   counterResult.innerText = counter;
-// };
-// minusBtn.onclick = () => {
-//   if (counter === 0) {
-//     return;
-//   }
-
-//   counter--;
-//   counterResult.innerText = counter;
-// };
+addBtn.onclick = () => {
+  counter++;
+  counterResult.innerText = counter;
+};
+minusBtn.onclick = () => {
+  if (counter === 0) {
+    return;
+  }
+  counter--;
+  counterResult.innerText = counter;
+};
 
 // var areThreadsEnabled = false;
 
@@ -61,11 +72,29 @@ function fillResults(results) {
   const list = document.querySelectorAll(
     "#results-list li > div.result-content"
   );
-  // const list2 = document.querySelectorAll("#results-list li > div.bar");
-  // console.log("_fillResults result dom list: ", list, list2);
-  // console.log("_fillResults result unique values: ", results);
+  const list2 = Array.from(
+    document.querySelectorAll("#results-list li > div.bar .bar-result")
+  );
+
+  const sorted = Object.keys(results)
+    .map((key) => {
+      return {
+        id: key,
+        value: results[key],
+      };
+    })
+    .sort((a, b) => {
+      return b.value - a.value;
+    });
+
   Array.from(list).forEach((element, i) => {
     element.textContent = results[i + 1]?.toLocaleString();
+  });
+
+  sorted.forEach((result, i) => {
+    const ele = list2[parseInt(result.id) - 1];
+    ele.style.width = `${((100 - i * 10) / 100) * 100}%`;
+    ele.style.backgroundColor = COLORS[i];
   });
 }
 
